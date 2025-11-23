@@ -1,32 +1,196 @@
-
-
-Then the browser will show **the whole thing as text**, because those ``` backticks turn it into a code block in HTML.
-
-We need to clean that.
-
-### Fix it step by step:
-
-1. Go to the code page:  
-   👉 **https://github.com/jocowtree/jocowtree.github.io**
-
-2. Click on **`index.html`**
-
-3. Click the **pencil icon** (✏️) to edit.
-
-4. **Select everything** and delete it.
-
-5. Now paste this **clean HTML ONLY** (⚠️ do NOT include any ``` lines):
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>My Portfolio – Decorator & Artist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f3f0;
+      color: #222;
+    }
+    header {
+      padding: 1.5rem 2rem;
+      background: #ffffff;
+      border-bottom: 1px solid #e3dfd7;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    nav a {
+      text-decoration: none;
+      color: #444;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      padding: 2.5rem 2rem 2rem;
+    }
+    .hero h1 {
+      font-size: 2.1rem;
+      margin-bottom: 0.4rem;
+    }
+    .hero p.subtitle {
+      color: #7a7368;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      max-width: 620px;
+    }
+    .section {
+      padding: 2rem;
+      border-top: 1px solid #e3dfd7;
+    }
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-item {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 0.8rem;
+      border: 1px solid #e3dfd7;
+    }
+    .gallery-item h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+    .gallery-item p {
+      font-size: 0.85rem;
+      color: #6a645b;
+    }
+    .contact p {
+      max-width: 520px;
+    }
+    .contact a {
+      color: #b0672f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      padding: 1rem 2rem 1.6rem;
+      border-top: 1px solid #e3dfd7;
+      font-size: 0.8rem;
+      color: #7a7368;
+      background: #fdfbf8;
+    }
+    @media (max-width: 600px) {
+      header, .hero, .section, footer {
+        padding-inline: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, I'm a Decorator & Artist</h1>
-  <p>This is my portfolio website. Real layout coming soon!</p>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">JOCOWTREE · DECORATOR & ARTIST</div>
+        <div>
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="top">
+      <h1>Decorating spaces with art, color and warmth.</h1>
+      <p class="subtitle">Portfolio of a decorator & visual artist – Jocowtree.</p>
+      <p>
+        I create cozy, character-filled interiors with murals, wall art and thoughtful
+        decor. From small corners to full rooms, I help spaces feel more personal,
+        inviting and alive.
+      </p>
+    </section>
+
+    <section class="section" id="about">
+      <h2>About me</h2>
+      <p>
+        I’m a decorator and artist who loves combining texture, color and simple forms.
+        My work often includes painted feature walls, abstract murals and gentle
+        styling using plants, textiles and found objects.
+      </p>
+      <p>
+        I enjoy working with homes, cafés, studios and small shops – anywhere that
+        needs a little more soul.
+      </p>
+    </section>
+
+    <section class="section" id="work">
+      <h2>Selected work</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <h3>Soft living room corner</h3>
+          <p>Warm tones, simple art and plants to create a calm reading area.</p>
+        </div>
+        <div class="gallery-item">
+          <h3>Café feature wall</h3>
+          <p>Hand-painted shapes that add energy without overwhelming the space.</p>
+        </div>
+        <div class="gallery-item">
+          <h3>Studio mural</h3>
+          <p>Abstract mural as a backdrop for photo shoots and creative work.</p>
+        </div>
+        <div class="gallery-item">
+          <h3>Bedroom refresh</h3>
+          <p>New color palette, art and styling to make a small room feel special.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <h2>Contact</h2>
+      <p>
+        Interested in a mural, feature wall or room styling? Tell me a bit about your
+        space, your city and your timeline. I’ll get back to you with ideas and
+        next steps.
+      </p>
+      <p>
+        Email: <a href="mailto:youremail@example.com">youremail@example.com</a><br>
+        Instagram: <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Jocowtree · Decorator & Artist
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
