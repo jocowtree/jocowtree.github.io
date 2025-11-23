@@ -2,25 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Portfolio – Decorator & Artist</title>
+  <title>Jocowtree – Decorator & Artist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Portfolio of Jocowtree, decorator and visual artist creating murals, feature walls and warm interiors."
+  />
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #f5f3f0;
       color: #222;
+      line-height: 1.6;
     }
-    header {
-      padding: 1.5rem 2rem;
-      background: #ffffff;
-      border-bottom: 1px solid #e3dfd7;
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-    .container {
-      max-width: 900px;
+
+    .page {
+      max-width: 960px;
       margin: 0 auto;
+      background: #fdfbf8;
+      min-height: 100vh;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
     }
+
+    header {
+      padding: 1.3rem 1.8rem;
+      border-bottom: 1px solid #e3dfd7;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
     nav {
       display: flex;
       justify-content: space-between;
@@ -28,166 +51,490 @@
       gap: 1rem;
       flex-wrap: wrap;
     }
+
     .logo {
       font-weight: 600;
-      letter-spacing: 0.12em;
-      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+      font-size: 0.85rem;
       text-transform: uppercase;
     }
-    nav a {
-      text-decoration: none;
-      color: #444;
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
       font-size: 0.9rem;
-      margin-left: 1rem;
     }
-    nav a:hover {
-      text-decoration: underline;
+
+    .nav-links a {
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
     }
-    .hero {
-      padding: 2.5rem 2rem 2rem;
+
+    .nav-links a:hover {
+      border-bottom-color: #c47a3a;
     }
-    .hero h1 {
+
+    main {
+      padding: 2.2rem 1.8rem 2.5rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
       font-size: 2.1rem;
       margin-bottom: 0.4rem;
     }
-    .hero p.subtitle {
+
+    .hero-subtitle {
       color: #7a7368;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
+      font-size: 0.98rem;
     }
-    .hero p {
+
+    .hero-text {
       max-width: 620px;
+      margin-bottom: 1.4rem;
     }
-    .section {
-      padding: 2rem;
-      border-top: 1px solid #e3dfd7;
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
     }
-    .section h2 {
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(196, 122, 58, 0.4);
+      background: rgba(196, 122, 58, 0.08);
+      color: #5e4128;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 0.7rem 1.3rem;
+      border: none;
+      background: linear-gradient(135deg, #c47a3a, #a95c26);
+      color: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.65rem 1.2rem;
+      border: 1px solid #d5d0c7;
+      background: #fff;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: #867e73;
+    }
+
+    h2.section-title {
       font-size: 1.3rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
-    .gallery {
+
+    .section-intro {
+      font-size: 0.94rem;
+      color: #6b645b;
+      margin-bottom: 1.1rem;
+      max-width: 600px;
+    }
+
+    .about-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 1.5rem;
     }
-    .gallery-item {
+
+    .about-text p + p {
+      margin-top: 0.7rem;
+    }
+
+    .about-list {
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      list-style: none;
+    }
+
+    .about-list li {
+      margin-bottom: 0.4rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .about-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #c47a3a;
+    }
+
+    .about-meta {
       background: #ffffff;
-      border-radius: 10px;
-      padding: 0.8rem;
+      border-radius: 16px;
       border: 1px solid #e3dfd7;
-    }
-    .gallery-item h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.3rem;
-    }
-    .gallery-item p {
+      padding: 1rem 1.1rem;
       font-size: 0.85rem;
-      color: #6a645b;
+      display: grid;
+      gap: 0.5rem;
     }
-    .contact p {
-      max-width: 520px;
+
+    .meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      color: #958d82;
+      margin-bottom: 0.1rem;
     }
-    .contact a {
-      color: #b0672f;
-      text-decoration: none;
+
+    .meta-value {
       font-weight: 500;
     }
-    .contact a:hover {
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 0.7rem;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #e3dfd7;
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .service-card p {
+      font-size: 0.86rem;
+      color: #6b645b;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-note {
+      font-size: 0.8rem;
+      color: #867e73;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    .work-item {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #e3dfd7;
+      padding: 0.9rem 1rem;
+      font-size: 0.86rem;
+    }
+
+    .work-item h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .work-tag {
+      font-size: 0.76rem;
+      color: #867e73;
+      margin-bottom: 0.3rem;
+    }
+
+    .work-item p {
+      color: #6b645b;
+    }
+
+    .quote-block {
+      background: #f1e7dc;
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    .quote-author {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #5b544a;
+    }
+
+    .contact-box {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e3dfd7;
+      padding: 1rem 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-box p + p {
+      margin-top: 0.6rem;
+    }
+
+    .contact-box a {
+      color: #b66229;
+      font-weight: 500;
+    }
+
+    .contact-box a:hover {
       text-decoration: underline;
     }
+
     footer {
-      padding: 1rem 2rem 1.6rem;
+      padding: 1rem 1.8rem 1.4rem;
       border-top: 1px solid #e3dfd7;
       font-size: 0.8rem;
-      color: #7a7368;
-      background: #fdfbf8;
+      color: #867e73;
+      background: #f1eee8;
+      text-align: center;
     }
-    @media (max-width: 600px) {
-      header, .hero, .section, footer {
+
+    @media (max-width: 700px) {
+      header {
         padding-inline: 1rem;
+      }
+
+      main {
+        padding-inline: 1rem;
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
+  <div class="page">
+    <header>
       <nav>
         <div class="logo">JOCOWTREE · DECORATOR & ARTIST</div>
-        <div>
+        <div class="nav-links">
           <a href="#about">About</a>
+          <a href="#services">Services</a>
           <a href="#work">Work</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
-    <section class="hero" id="top">
-      <h1>Decorating spaces with art, color and warmth.</h1>
-      <p class="subtitle">Portfolio of a decorator & visual artist – Jocowtree.</p>
-      <p>
-        I create cozy, character-filled interiors with murals, wall art and thoughtful
-        decor. From small corners to full rooms, I help spaces feel more personal,
-        inviting and alive.
-      </p>
-    </section>
+    <main>
+      <!-- Hero -->
+      <section id="top">
+        <h1 class="hero-title">Decorating spaces with art, color and warmth.</h1>
+        <p class="hero-subtitle">Portfolio of Jocowtree – decorator & visual artist.</p>
+        <p class="hero-text">
+          I create cozy, character-filled interiors with murals, painted feature walls and
+          simple styling. From small corners to full rooms, I help spaces feel more
+          personal, inviting and alive.
+        </p>
 
-    <section class="section" id="about">
-      <h2>About me</h2>
-      <p>
-        I’m a decorator and artist who loves combining texture, color and simple forms.
-        My work often includes painted feature walls, abstract murals and gentle
-        styling using plants, textiles and found objects.
-      </p>
-      <p>
-        I enjoy working with homes, cafés, studios and small shops – anywhere that
-        needs a little more soul.
-      </p>
-    </section>
-
-    <section class="section" id="work">
-      <h2>Selected work</h2>
-      <div class="gallery">
-        <div class="gallery-item">
-          <h3>Soft living room corner</h3>
-          <p>Warm tones, simple art and plants to create a calm reading area.</p>
+        <div class="pill-row">
+          <div class="pill">Murals & feature walls</div>
+          <div class="pill">Home & café interiors</div>
+          <div class="pill">Soft color palettes</div>
         </div>
-        <div class="gallery-item">
-          <h3>Café feature wall</h3>
-          <p>Hand-painted shapes that add energy without overwhelming the space.</p>
-        </div>
-        <div class="gallery-item">
-          <h3>Studio mural</h3>
-          <p>Abstract mural as a backdrop for photo shoots and creative work.</p>
-        </div>
-        <div class="gallery-item">
-          <h3>Bedroom refresh</h3>
-          <p>New color palette, art and styling to make a small room feel special.</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="section contact" id="contact">
-      <h2>Contact</h2>
-      <p>
-        Interested in a mural, feature wall or room styling? Tell me a bit about your
-        space, your city and your timeline. I’ll get back to you with ideas and
-        next steps.
-      </p>
-      <p>
-        Email: <a href="mailto:youremail@example.com">youremail@example.com</a><br>
-        Instagram: <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a>
-      </p>
-    </section>
-  </main>
+        <div class="btn-row">
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+            Book a project chat
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})">
+            View selected work
+          </button>
+        </div>
 
-  <footer>
-    <div class="container">
+        <p class="note">Based in [Your City] · available for local and remote projects.</p>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <h2 class="section-title">About me</h2>
+        <p class="section-intro">
+          I love combining simple shapes, soft colors and texture. My work often mixes
+          painting and styling to create rooms that feel calm, playful and lived-in.
+        </p>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I work as both decorator and artist, focusing on walls, corners and small
+              spaces that need more personality. I especially enjoy projects in homes,
+              cafés and creative studios.
+            </p>
+            <p>
+              Every project starts with a conversation about how you want the space to
+              feel—cozy, bright, bold, relaxed—and we build from there with color,
+              mural ideas and simple decor.
+            </p>
+
+            <ul class="about-list">
+              <li>Wall murals and painted shapes</li>
+              <li>Feature walls and color blocking</li>
+              <li>Light styling with art, plants and objects</li>
+              <li>Simple, budget-friendly transformations</li>
+            </ul>
+          </div>
+
+          <aside class="about-meta">
+            <div>
+              <div class="meta-label">Experience</div>
+              <div class="meta-value">Decor & art projects since [year]</div>
+            </div>
+            <div>
+              <div class="meta-label">Spaces</div>
+              <div class="meta-value">Homes, cafés, studios, small shops</div>
+            </div>
+            <div>
+              <div class="meta-label">Style</div>
+              <div class="meta-value">Warm, minimal, abstract and soft color stories</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services">
+        <h2 class="section-title">Services</h2>
+        <p class="section-intro">
+          Every space and budget is different. Here are a few simple ways we can work
+          together:
+        </p>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Murals & feature walls</h3>
+            <p>
+              Custom wall paintings and shapes that become a focal point in your home,
+              café or studio.
+            </p>
+            <p class="service-note">Great for: blank walls, backdrops, entrances.</p>
+          </div>
+          <div class="service-card">
+            <h3>Room refresh</h3>
+            <p>
+              A light makeover using paint, small decor and layout tweaks to make a room
+              feel new without starting from zero.
+            </p>
+            <p class="service-note">Great for: bedrooms, living rooms, home corners.</p>
+          </div>
+          <div class="service-card">
+            <h3>Color & mood consult</h3>
+            <p>
+              Online or in-person session to choose colors and simple ideas for your
+              space, with sketches and notes you can follow.
+            </p>
+            <p class="service-note">Great for: DIY projects and planning.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work -->
+      <section id="work">
+        <h2 class="section-title">Selected work</h2>
+        <p class="section-intro">
+          A few examples of the kinds of spaces and walls I help create:
+        </p>
+
+        <div class="work-grid">
+          <article class="work-item">
+            <div class="work-tag">Home · Living room</div>
+            <h3>Soft corner reading nook</h3>
+            <p>
+              Gentle shapes and warm colors to turn an empty corner into a cozy reading
+              spot.
+            </p>
+          </article>
+
+          <article class="work-item">
+            <div class="work-tag">Café · Feature wall</div>
+            <h3>Abstract coffee mural</h3>
+            <p>
+              Hand-painted shapes that add energy to a small coffee bar without
+              overwhelming the space.
+            </p>
+          </article>
+
+          <article class="work-item">
+            <div class="work-tag">Studio · Backdrop</div>
+            <h3>Creative studio mural</h3>
+            <p>
+              A simple abstract mural used as a background for photos and video calls.
+            </p>
+          </article>
+
+          <article class="work-item">
+            <div class="work-tag">Home · Bedroom</div>
+            <h3>Color-blocked headboard wall</h3>
+            <p>
+              Soft color-blocked shape instead of a physical headboard, with small art
+              and plants.
+            </p>
+          </article>
+        </div>
+
+        <div class="quote-block">
+          “We gave Jocowtree one blank wall and a few reference photos. The finished
+          mural completely changed the mood of the room. It’s now everyone’s favorite
+          spot.”
+          <div class="quote-author">— Client, small studio space</div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-intro">
+          Have a wall, room or small space in mind? Share a bit about your idea, your
+          city and your timeline, and I’ll reply with next steps.
+        </p>
+
+        <div class="contact-box">
+          <p>
+            ✉️ Email: <a href="mailto:youremail@example.com">youremail@example.com</a>
+          </p>
+          <p>
+            📸 Instagram:
+            <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a>
+          </p>
+          <p>
+            Please include 2–3 photos of your space if possible, and a few words on how
+            you’d like it to feel (for example: “calm and light” or “playful and bold”).
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
       © <span id="year"></span> Jocowtree · Decorator & Artist
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
